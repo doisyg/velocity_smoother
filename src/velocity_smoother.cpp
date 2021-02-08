@@ -187,8 +187,8 @@ void VelocitySmoother::timerCB()
     input_active_ = false;
     if (target_vel_.linear.x != 0.0 || target_vel_.angular.z != 0.0)
     {
-      RCLCPP_WARN(get_logger(), "Velocity Smoother : input went inactive leaving us a non-zero target velocity (%d, %d), zeroing...",
-                  target_vel_.linear.x,
+      RCLCPP_WARN_STREAM(get_logger(), "Velocity Smoother : input went inactive leaving us a non-zero target velocity zeroing..." <<
+                  target_vel_.linear.x <<
                   target_vel_.angular.z);
       target_vel_ = geometry_msgs::msg::Twist();
     }
